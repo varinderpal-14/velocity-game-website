@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="CSS/loader.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="main">
+            <div class="text">
+                I Am A Gamer
+            </div>
+            <div class="title">
+                GAME OVER
+            </div>
+            <div class="bar">
+                <div id="fill">
+                </div>
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript">
+    var progess = 0;
+    document.onreadystatechange = function(){
+        if(document.readyState == "interactive")
+        {
+            var allElement = $("*");
+            var length = allElement.length;
+            for(var i=0;i<length;i++)
+            {
+                set_element(allElement[i],length);
+            }
+        }
+    }
+    function set_element(element,totalElement)
+    {
+        var percentage = 100 / totalElement;
+        if($(element).length==1)
+        {
+            $("#fill").animate({width:progess+percentage+"%"},1000,function()
+            {
+                if(document.getElementById("fill").style.width=="100%");
+                {
+                    $(".main").fadeOut(500);
+                }
+            });
+            progess = progess + percentage;
+        }
+    }
+    </script> 
+</html>
